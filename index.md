@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Steven Wade's SNHU ePortfolio (WIP)
 
 You can use the [editor on GitHub](https://github.com/stevenwadejr/snhu-ePortfolio/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
