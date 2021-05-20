@@ -1,0 +1,21 @@
+{
+    "name": "stevenwadejr/category-one",
+    "description": "Enhancement One: Software Design and Engineering",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Steven Wade",
+            "email": "stevenwadejr@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "stevenwadejr\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "league/csv": "^9.7",
+        "symfony/console": "^5.2"
+    }
+}
