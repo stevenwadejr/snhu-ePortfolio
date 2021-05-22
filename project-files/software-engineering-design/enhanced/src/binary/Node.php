@@ -6,7 +6,7 @@ use stevenwadejr\Bid;
 
 class Node
 {
-    public Bid $bid;
+    public ?Bid $bid = null;
 
     public ?Node $left = null;
 
@@ -14,7 +14,7 @@ class Node
 
     public function __construct(Bid $bid = null)
     {
-        $this->bid ??= $bid;
+        $this->bid = $bid;
     }
 
 }
