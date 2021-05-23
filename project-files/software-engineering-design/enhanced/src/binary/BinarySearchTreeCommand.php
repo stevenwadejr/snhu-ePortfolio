@@ -42,7 +42,7 @@ class BinarySearchTreeCommand extends Command
             $choice = $helper->ask($input, $output, $question);
 
             switch ($choice) {
-                case 1:
+                case 1: // Load Bids
                     $bst = new BinarySearchTree();
 
                     // Initialize a timer variable before loading bids
@@ -63,7 +63,7 @@ class BinarySearchTreeCommand extends Command
                     $output->writeln('time: ' . $executionTime . ' seconds');
                     break;
 
-                case 2:
+                case 2: // Display All Bids
                     if ($bst === null) {
                         $output->writeln('<comment>No bids loaded</comment>');
                         break;
@@ -72,7 +72,7 @@ class BinarySearchTreeCommand extends Command
                     $bst->inOrder();
                     break;
 
-                case 3:
+                case 3: // Find Bid
                     if ($bst === null) {
                         $output->writeln('<comment>No bids loaded</comment>');
                         break;
@@ -85,7 +85,7 @@ class BinarySearchTreeCommand extends Command
                     $end = microtime(true);
                     $executionTime = $end - $start;
 
-                    if (!empty($bid->bidId)) {
+                    if ($bid !== null) {
                         $this->displayBid($bid);
                     } else {
                         $output->writeln('<comment>Bid Id ' . $bidKey . ' not found.</comment>');
@@ -95,7 +95,7 @@ class BinarySearchTreeCommand extends Command
 
                     break;
 
-                case 4:
+                case 4: // Remove Bid
                     if ($bst === null) {
                         $output->writeln('<comment>No bids loaded</comment>');
                         break;
