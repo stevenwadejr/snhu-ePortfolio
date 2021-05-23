@@ -1,5 +1,9 @@
 <?php
 
+if (phpversion() < 8) {
+    die('PHP version 8 is required');
+}
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 use stevenwadejr\Application;
