@@ -17,7 +17,10 @@ class LinkedList
      * Class Destructor
      *
      * When the class instance is deleted from memory, loop through each node
-     * and delete it as well.
+     * and delete it as well. This should happen anyway given how PHP handles garbage
+     * collection of unreferenced objects, but this function makes the
+     * process explicit.
+     *
      */
     public function __destruct()
     {
