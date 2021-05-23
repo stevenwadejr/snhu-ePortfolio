@@ -4,6 +4,9 @@ namespace stevenwadejr\hash;
 
 use stevenwadejr\Bid;
 
+/**
+ * Node used within a hash table
+ */
 class Node
 {
     public ?Bid $bid;

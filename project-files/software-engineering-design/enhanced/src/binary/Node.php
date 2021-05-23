@@ -4,6 +4,9 @@ namespace stevenwadejr\binary;
 
 use stevenwadejr\Bid;
 
+/**
+ * Node used within a binary search tree
+ */
 class Node
 {
     public ?Bid $bid = null;
