@@ -126,15 +126,16 @@ class Command extends SymfonyCommand
      * Helper function to print a bid to the screen
      *
      * @param Bid $bid
+     * @param bool $highlight
      */
-    protected function displayBid(Bid $bid): void
+    protected function displayBid(Bid $bid, bool $highlight = true): void
     {
         // Use the `write` method here instead of `writeln` in order to write the format
         // easier by passing in each piece as an array element. Finish the string off
         // with a newline character.
         $this->output->write(
             [
-                '<info>',
+                $highlight ? '<info>' : '',
                 $bid->bidId,
                 ': ',
                 $bid->title,
@@ -142,7 +143,7 @@ class Command extends SymfonyCommand
                 $bid->amount,
                 ' | ',
                 $bid->fund,
-                '</info>',
+                $highlight ? '</info>' : '',
                 PHP_EOL
             ]
         );
