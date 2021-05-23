@@ -50,7 +50,7 @@ class HashTableCommand extends Command
             $choice = $helper->ask($input, $output, $question);
 
             switch ($choice) {
-                case 1:
+                case 1: // Load Bids
 
                     // Initialize a timer variable before loading bids
                     $start = microtime(true);
@@ -61,6 +61,7 @@ class HashTableCommand extends Command
                             $bidTable->insert($bid);
                         },
                         function (Reader $reader, ResultSet $resultSet) use (&$bidTable) {
+                            // Instantiate the $bidTable to a new HashTable with the number of rows in the CSV file
                             $bidTable = new HashTable($resultSet->count());
                         }
                     );
@@ -71,7 +72,7 @@ class HashTableCommand extends Command
                     $output->writeln('time: ' . $executionTime . ' seconds');
                     break;
 
-                case 2:
+                case 2: // Display All Bids
                     if ($bidTable === null) {
                         $output->writeln('<comment>No bids loaded</comment>');
                         break;
@@ -83,7 +84,7 @@ class HashTableCommand extends Command
 
                     break;
 
-                case 3:
+                case 3: // Find Bid
                     if ($bidTable === null) {
                         $output->writeln('<comment>No bids loaded</comment>');
                         break;
@@ -106,7 +107,7 @@ class HashTableCommand extends Command
 
                     break;
 
-                case 4:
+                case 4: // Remove Bid
                     if ($bidTable === null) {
                         $output->writeln('<comment>No bids loaded</comment>');
                         break;
@@ -114,7 +115,7 @@ class HashTableCommand extends Command
 
                     $bidTable->remove($bidKey);
                     break;
-                case 5:
+                case 5: // Count Nodes
                     if ($bidTable === null) {
                         $output->writeln('<comment>No bids loaded</comment>');
                         break;
