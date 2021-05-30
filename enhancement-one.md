@@ -1,6 +1,8 @@
+---
 layout: page
 title: "Enhancement One: Software Engineering/Design"
 permalink: "/enhancement-one"
+---
 
 # Enhancement One: Software Engineering/Design
 
