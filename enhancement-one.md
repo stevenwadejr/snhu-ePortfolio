@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: template
 title: "Enhancement One: Software Engineering/Design"
 permalink: "/enhancement-one"
 ---
