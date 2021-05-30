@@ -1,2 +1,6 @@
 theme: jekyll-theme-leap-day
 title: CS-499-T5476 ePortfolio - Steven Wade
+
+menu:
+  - label: "Enhancement One"
+    href: "/enhancement-one"
