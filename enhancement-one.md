@@ -1,9 +1,3 @@
----
-layout: template
-title: "Enhancement One: Software Engineering/Design"
-permalink: "/enhancement-one"
----
-
 # Enhancement One: Software Engineering/Design
 
 The artifact for this milestone, Software Design/Engineering, is the final project from CS-260 and was originally completed in February 2020.  The artifact consists of examples of a binary search tree, a hash table, a linked list, and two vector sorting algorithms.  I chose to include this artifact in my portfolio because these data structures and algorithms are commonly used throughout computer science.  Translating these structures from C++ to PHP showcases my abilities in software development as it requires me to have an abstract understanding of the data structures rather than relying on concrete implementations.  The enhancement also showcases my skills at being able to adapt concepts between languages utilizing the strengths and addressing the weaknesses of the destination language.
