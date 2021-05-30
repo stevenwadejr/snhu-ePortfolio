@@ -40,7 +40,7 @@
       <nav>
         <ul>
         {% for item in site.menu %}
-          <a href="{{ item.href | relative_url }}">{{ item.label }}</a>
+          <li><a href="{{ item.href | relative_url }}">{{ item.label }}</a></li>
         {% endfor %}
         </ul>
       </nav>
