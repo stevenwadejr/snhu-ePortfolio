@@ -1,0 +1,8 @@
+{
+  "name": "enhanced",
+  "template": "Default",
+  "isConfigured": {
+    "client": true,
+    "server": true
+  }
+}
