@@ -1,3 +1,4 @@
 project-files/software-engineering-design/enhanced/composer.lock
 .idea/
 vendor/
+node_modules/
