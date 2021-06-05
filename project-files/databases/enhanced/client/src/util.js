@@ -49,9 +49,9 @@ export const stateAbbrMap = {
     "West Virginia": "WV",
     Wisconsin: "WI",
     Wyoming: "WY",
-  };
+};
 
-  export const abbrStateMap = Object.keys(stateAbbrMap).reduce((acc, key) => {
+export const abbrStateMap = Object.keys(stateAbbrMap).reduce((acc, key) => {
     acc[stateAbbrMap[key]] = key;
     return acc;
-  }, {});
+}, {});

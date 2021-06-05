@@ -1,5 +1,5 @@
 <template>
-  <canvas id="restaurant-averages-by-state"></canvas>
+    <canvas id="restaurant-averages-by-state"></canvas>
 </template>
 
 <script>
@@ -7,76 +7,74 @@ import { Chart } from "chart.js";
 import { abbrStateMap } from "../util";
 
 export default {
-  name: "AveragesByState",
-  props: {
-    averageRestaurantSpend: {
-      type: Array,
-      required: true,
-    },
-  },
-  watch: {
-    averageRestaurantSpend(newValue) {
-      console.log(newValue);
-      this.chart.update();
-    },
-  },
-  mounted() {
-    new Chart(
-      document.getElementById("restaurant-averages-by-state").getContext("2d"),
-      {
-        type: "bar",
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true,
-              title: {
-                display: true,
-                text: "$ Average",
-              },
-            },
-            x: {
-              title: {
-                display: true,
-                text: "State",
-              },
-            },
-          },
-          plugins: {
-            legend: {
-              display: false,
-              position: "top",
-            },
-            title: {
-              display: true,
-              text: "Average Restaurant Spend by State",
-            },
-            tooltip: {
-              callbacks: {
-                label(tooltipItem) {
-                  return "$" + tooltipItem.formattedValue;
-                },
-                title(items) {
-                  return abbrStateMap[items[0].label];
-                },
-              },
-            },
-          },
+    name: "AveragesByState",
+    props: {
+        averageRestaurantSpend: {
+            type: Array,
+            required: true,
         },
-        data: {
-          labels: this.averageRestaurantSpend.map((item) => item.state),
-          datasets: [
+    },
+    mounted() {
+        new Chart(
+            document
+                .getElementById("restaurant-averages-by-state")
+                .getContext("2d"),
             {
-              label: "Average Restaurant Spend by State",
-              data: this.averageRestaurantSpend.map((item) => {
-                return item.avg; // [abbrStateMap[item.state], item.avg];
-              }),
-              backgroundColor: ["rgba(54, 162, 235, 0.8)"],
-            },
-          ],
-        },
-      }
-    );
-  },
+                type: "bar",
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: "$ Average",
+                            },
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: "State",
+                            },
+                        },
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                            position: "top",
+                        },
+                        title: {
+                            display: true,
+                            text: "Average Restaurant Spend by State",
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label(tooltipItem) {
+                                    return "$" + tooltipItem.formattedValue;
+                                },
+                                title(items) {
+                                    return abbrStateMap[items[0].label];
+                                },
+                            },
+                        },
+                    },
+                },
+                data: {
+                    labels: this.averageRestaurantSpend.map(
+                        (item) => item.state
+                    ),
+                    datasets: [
+                        {
+                            label: "Average Restaurant Spend by State",
+                            data: this.averageRestaurantSpend.map((item) => {
+                                return item.avg; // [abbrStateMap[item.state], item.avg];
+                            }),
+                            backgroundColor: ["rgba(54, 162, 235, 0.8)"],
+                        },
+                    ],
+                },
+            }
+        );
+    },
 };
 </script>

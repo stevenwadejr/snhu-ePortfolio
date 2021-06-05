@@ -1,28 +1,110 @@
+export async function customerAge(collection) {
+    const results = await collection
+        .aggregate([
+            {
+                $bucket: {
+                    groupBy: "$Age", // Field to group by
+                    boundaries: [18, 28, 38, 48, 58, 68, 78, 88], // Boundaries for the buckets
+                    default: "Other", // Bucket id for documents which do not fall into a bucket
+                    output: {
+                        // Output for each bucket
+                        count: { $sum: 1 },
+                    },
+                },
+            },
+            {
+                $addFields: {
+                    lowerBound: "$_id",
+                    upperBound: {
+                        $arrayElemAt: [
+                            [18, 28, 38, 48, 58, 68, 78, 88],
+                            {
+                                $add: [
+                                    {
+                                        $indexOfArray: [
+                                            [18, 28, 38, 48, 58, 68, 78, 88],
+                                            "$_id",
+                                        ],
+                                    },
+                                    1,
+                                ],
+                            },
+                        ],
+                    },
+                },
+            },
+        ])
+        .toArray();
 
-export function customerAge() {
-
+    return results;
 }
 
-export function customerIncome() {
+export async function customerIncome(collection) {
+    const results = await collection
+        .aggregate([
+            {
+                $bucket: {
+                    groupBy: "$Income", // Field to group by
+                    boundaries: [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120], // Boundaries for the buckets
+                    default: "Other", // Bucket id for documents which do not fall into a bucket
+                    output: {
+                        // Output for each bucket
+                        count: { $sum: 1 },
+                    },
+                },
+            },
+            {
+                $addFields: {
+                    lowerBound: "$_id",
+                    upperBound: {
+                        $arrayElemAt: [
+                            [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
+                            {
+                                $add: [
+                                    {
+                                        $indexOfArray: [
+                                            [
+                                                20, 30, 40, 50, 60, 70, 80, 90,
+                                                100, 110, 120,
+                                            ],
+                                            "$_id",
+                                        ],
+                                    },
+                                    1,
+                                ],
+                            },
+                        ],
+                    },
+                },
+            },
+        ])
+        .toArray();
 
+    return results;
 }
 
 export async function salesByState(collection) {
-    const results = await collection.aggregate([
-        {
-            "$group": {
-                _id: "$state",
-                sales: { 
-                    "$sum": {
-                        "$add": ["$Restaurant", "$Webstore_Spend", "$THIRD_SPEND"]
-                    } 
-                }
-            }
-        },
-        {
-            "$sort": { "_id": 1 }
-        }
-    ]).toArray();
+    const results = await collection
+        .aggregate([
+            {
+                $group: {
+                    _id: "$state",
+                    sales: {
+                        $sum: {
+                            $add: [
+                                "$Restaurant",
+                                "$Webstore_Spend",
+                                "$THIRD_SPEND",
+                            ],
+                        },
+                    },
+                },
+            },
+            {
+                $sort: { _id: 1 },
+            },
+        ])
+        .toArray();
 
     return results.reduce((acc, result) => {
         acc[result._id] = result.sales;
@@ -31,38 +113,40 @@ export async function salesByState(collection) {
 }
 
 export async function averageRestaurantSpendByState(collection) {
-    const results = await collection.aggregate([
-        {
-            "$group": {
-                _id: "$state",
-                averageRestaurantSpend: { 
-                    "$avg": "$Restaurant"
-                }
-            }
-        },
-        {
-            "$project": { averageRestaurantSpend: { "$round": [ "$averageRestaurantSpend", 2 ] } }
-        },
-        {
-            "$sort": { "_id": 1 }
-        }
-    ]).toArray();
+    const results = await collection
+        .aggregate([
+            {
+                $group: {
+                    _id: "$state",
+                    averageRestaurantSpend: {
+                        $avg: "$Restaurant",
+                    },
+                },
+            },
+            {
+                $project: {
+                    averageRestaurantSpend: {
+                        $round: ["$averageRestaurantSpend", 2],
+                    },
+                },
+            },
+            {
+                $sort: { _id: 1 },
+            },
+        ])
+        .toArray();
 
-    return results.map(result => {
+    return results.map((result) => {
         return {
             state: result._id,
-            avg: result.averageRestaurantSpend
+            avg: result.averageRestaurantSpend,
         };
     });
 }
 
-export function totalSalesBySource() {
+export function totalSalesBySource() {}
 
-}
-
-export function averageSpendPerSourceByMaritalStatus() {
-    
-}
+export function averageSpendPerSourceByMaritalStatus() {}
 
 export function mapRow(row) {
     return {
@@ -83,5 +167,5 @@ export function mapRow(row) {
         age: row.Age,
         married: row.Married_YN,
         income: row.Income,
-    }
+    };
 }
