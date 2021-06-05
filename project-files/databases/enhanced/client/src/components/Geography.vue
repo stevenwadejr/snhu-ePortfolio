@@ -62,12 +62,16 @@ export default {
         };
     },
     async mounted() {
+        // Set the initial top offset accounting for the height of the header
         this.offsetTop = Object.values(this.$refs)[0].offsetTop;
         this.loading = true;
-        const response = await axios.get(`http://localhost:9000/api/geography`);
+
+        // Fetch the data for this page
+        const response = await axios.get("/geography");
 
         this.loading = false;
 
+        // Update the model values with the data from the response
         if (response && response.data) {
             const res = response.data;
             this.salesByState = res.data.salesByState;
@@ -75,6 +79,7 @@ export default {
         }
     },
     methods: {
+        // Scrolls to the given chart
         // Retrieved from https://shouts.dev/vuejs-scroll-to-elements-on-the-page
         goto(refName) {
             this.activeButton = refName;

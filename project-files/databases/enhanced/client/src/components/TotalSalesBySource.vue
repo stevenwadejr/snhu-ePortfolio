@@ -1,40 +1,42 @@
 <template>
-    <canvas id="restaurant-averages-by-state"></canvas>
+    <canvas id="total-sales-by-source"></canvas>
 </template>
 
 <script>
 import { Chart } from "chart.js";
-import { abbrStateMap } from "../util";
+
+const keyMap = {
+    restaurant: "Restaurant",
+    web: "Web",
+    third_party: "Third-Party",
+};
 
 export default {
-    name: "AveragesByState",
+    name: "TotalSalesBySource",
     props: {
-        averageRestaurantSpend: {
-            type: Array,
+        totalSalesBySource: {
+            type: Object,
             required: true,
         },
     },
     mounted() {
         new Chart(
-            document
-                .getElementById("restaurant-averages-by-state")
-                .getContext("2d"),
+            document.getElementById("total-sales-by-source").getContext("2d"),
             {
                 type: "bar",
                 options: {
                     responsive: true,
                     scales: {
                         y: {
-                            beginAtZero: true,
                             title: {
                                 display: true,
-                                text: "$ Average",
+                                text: "Sales ($)",
                             },
                         },
                         x: {
                             title: {
                                 display: true,
-                                text: "State",
+                                text: "Source",
                             },
                         },
                     },
@@ -45,33 +47,33 @@ export default {
                         },
                         title: {
                             display: true,
-                            text: "Average Restaurant Spend by State",
+                            text: "Total Sales by Source",
                         },
                         tooltip: {
                             callbacks: {
                                 label(tooltipItem) {
-                                    // Format the dollar value
                                     return " $" + tooltipItem.formattedValue;
                                 },
-                                title(items) {
-                                    // Show the state's name as the tooltip title
-                                    return abbrStateMap[items[0].label];
+                                title() {
+                                    return "";
                                 },
                             },
                         },
                     },
                 },
                 data: {
-                    labels: this.averageRestaurantSpend.map(
-                        (item) => item.state
+                    labels: Object.keys(this.totalSalesBySource).map(
+                        (key) => keyMap[key]
                     ),
                     datasets: [
                         {
-                            label: "Average Restaurant Spend by State",
-                            data: this.averageRestaurantSpend.map(
-                                (item) => item.avg
-                            ),
-                            backgroundColor: ["rgba(54, 162, 235, 0.8)"],
+                            label: "Total Sales by Source",
+                            data: Object.values(this.totalSalesBySource),
+                            backgroundColor: [
+                                "rgba(54, 162, 235, 0.8)",
+                                "rgba(255, 99, 132, 0.8)",
+                                "rgba(75, 192, 192, 0.8)",
+                            ],
                         },
                     ],
                 },

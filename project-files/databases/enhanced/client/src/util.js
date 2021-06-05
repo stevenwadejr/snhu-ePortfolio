@@ -51,6 +51,7 @@ export const stateAbbrMap = {
     Wyoming: "WY",
 };
 
+// Create a reverse map with abbreviations as the keys and full names as the values
 export const abbrStateMap = Object.keys(stateAbbrMap).reduce((acc, key) => {
     acc[stateAbbrMap[key]] = key;
     return acc;

@@ -51,6 +51,7 @@ export default {
                                 );
                             },
                             title() {
+                                // Don't show a tooltip title
                                 return "";
                             },
                         },

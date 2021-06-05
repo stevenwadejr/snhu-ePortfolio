@@ -44,10 +44,13 @@ export default {
     },
     async mounted() {
         this.loading = true;
-        const response = await axios.get(`http://localhost:9000/api/customers`);
+
+        // Fetch the data for this page
+        const response = await axios.get("/customers");
 
         this.loading = false;
 
+        // Update the model values with the data from the response
         if (response && response.data) {
             const res = response.data;
             this.customersByAge = res.data.customersByAge;

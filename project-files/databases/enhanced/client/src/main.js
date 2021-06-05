@@ -1,7 +1,9 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import axios from "axios";
 
+// Import and set up Chart.js
 import {
     Chart,
     ArcElement,
@@ -57,6 +59,10 @@ Chart.register(
 
 Vue.config.productionTip = false;
 
+// Set the base URL of the API
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+
+// Instantiate the application
 new Vue({
     router,
     render: (h) => h(App),

@@ -13,7 +13,6 @@
 
 <script>
 import axios from "axios";
-// import { Chart } from "chart.js";
 import { ChoroplethChart, topojson } from "chartjs-chart-geo";
 import { stateAbbrMap } from "../util";
 
@@ -32,6 +31,8 @@ export default {
     },
     async mounted() {
         this.loading = true;
+
+        // Fetch state and country boundary information
         const response = await axios.get(
             "https://unpkg.com/us-atlas/states-10m.json"
         );

@@ -51,6 +51,7 @@ export default {
                                 );
                             },
                             title() {
+                                // Don't show a tooltip title
                                 return "";
                             },
                         },
@@ -59,6 +60,8 @@ export default {
             },
             data: {
                 labels: this.customerIncome.map((item) => {
+                    // Format the x-axis labels to show lowerbounds and upper bounds
+                    // Ex: '20 - 30K'
                     return `${item.lowerBound} - ${item.upperBound}K`;
                 }),
                 datasets: [

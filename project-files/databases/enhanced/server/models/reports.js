@@ -52,7 +52,7 @@ export async function customerMaritalStatus(collection) {
         .toArray();
 
     return results.reduce((acc, result) => {
-        acc[result._id == "N" ? "Not Married" : "Married"] = result.count;
+        acc[result._id == "Y" ? "Married" : "Not Married"] = result.count;
         return acc;
     }, {});
 }
@@ -162,9 +162,138 @@ export async function averageRestaurantSpendByState(collection) {
     });
 }
 
-export function totalSalesBySource() {}
+export async function totalSalesBySource(collection) {
+    const results = await collection
+        .aggregate([
+            {
+                $group: {
+                    _id: null,
+                    restaurant: {
+                        $sum: {
+                            $add: ["$Restaurant"],
+                        },
+                    },
+                    web: {
+                        $sum: {
+                            $add: ["$Webstore_Spend"],
+                        },
+                    },
+                    third_party: {
+                        $sum: {
+                            $add: ["$THIRD_SPEND"],
+                        },
+                    },
+                },
+            },
+        ])
+        .toArray();
 
-export function averageSpendPerSourceByMaritalStatus() {}
+    return (
+        results.map((result) => {
+            delete result._id;
+            return result;
+        })[0] || {}
+    );
+}
+
+export async function averageSalesBySource(collection) {
+    const results = await collection
+        .aggregate([
+            {
+                $group: {
+                    _id: null,
+                    restaurant: {
+                        $avg: {
+                            $add: ["$Restaurant"],
+                        },
+                    },
+                    web: {
+                        $avg: {
+                            $add: ["$Webstore_Spend"],
+                        },
+                    },
+                    third_party: {
+                        $avg: {
+                            $add: ["$THIRD_SPEND"],
+                        },
+                    },
+                },
+            },
+            {
+                $project: {
+                    restaurant: {
+                        $round: ["$restaurant", 0],
+                    },
+                    web: {
+                        $round: ["$web", 0],
+                    },
+                    third_party: {
+                        $round: ["$third_party", 0],
+                    },
+                },
+            },
+        ])
+        .toArray();
+
+    return (
+        results.map((result) => {
+            delete result._id;
+            return result;
+        })[0] || {}
+    );
+}
+
+export async function averageSpendPerSourceByMaritalStatus(collection) {
+    const results = await collection
+        .aggregate([
+            {
+                $group: {
+                    _id: "$Married_YN",
+                    restaurant: {
+                        $avg: {
+                            $add: ["$Restaurant"],
+                        },
+                    },
+                    web: {
+                        $avg: {
+                            $add: ["$Webstore_Spend"],
+                        },
+                    },
+                    third_party: {
+                        $avg: {
+                            $add: ["$THIRD_SPEND"],
+                        },
+                    },
+                },
+            },
+            {
+                $project: {
+                    restaurant: {
+                        $round: ["$restaurant", 0],
+                    },
+                    web: {
+                        $round: ["$web", 0],
+                    },
+                    third_party: {
+                        $round: ["$third_party", 0],
+                    },
+                },
+            },
+            {
+                $sort: { _id: 1 },
+            },
+        ])
+        .toArray();
+
+    return results.reduce((acc, result) => {
+        acc[result._id == "Y" ? "Married" : "Not Married"] = {
+            restaurant: result.restaurant,
+            web: result.web,
+            third_party: result.third_party,
+        };
+        return acc;
+    }, {});
+}
 
 export function mapRow(row) {
     return {
