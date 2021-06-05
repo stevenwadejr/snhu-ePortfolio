@@ -18,6 +18,20 @@ export default {
             type: "bar",
             options: {
                 responsive: true,
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Customers",
+                        },
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Income",
+                        },
+                    },
+                },
                 plugins: {
                     legend: {
                         display: false,
@@ -45,7 +59,7 @@ export default {
             },
             data: {
                 labels: this.customerIncome.map((item) => {
-                    return `${item.lowerBound} - ${item.upperBound}`;
+                    return `${item.lowerBound} - ${item.upperBound}K`;
                 }),
                 datasets: [
                     {

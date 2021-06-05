@@ -18,6 +18,20 @@ export default {
             type: "bar",
             options: {
                 responsive: true,
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Customers",
+                        },
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Age",
+                        },
+                    },
+                },
                 plugins: {
                     legend: {
                         display: false,

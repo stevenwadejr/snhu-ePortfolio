@@ -39,6 +39,24 @@ export async function customerAge(collection) {
     return results;
 }
 
+export async function customerMaritalStatus(collection) {
+    const results = await collection
+        .aggregate([
+            {
+                $group: {
+                    _id: "$Married_YN",
+                    count: { $sum: 1 },
+                },
+            },
+        ])
+        .toArray();
+
+    return results.reduce((acc, result) => {
+        acc[result._id == "N" ? "Not Married" : "Married"] = result.count;
+        return acc;
+    }, {});
+}
+
 export async function customerIncome(collection) {
     const results = await collection
         .aggregate([

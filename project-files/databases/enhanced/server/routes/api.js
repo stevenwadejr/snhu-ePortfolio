@@ -33,11 +33,15 @@ router.get("/customers", async (req, res) => {
     const collection = await req.context.db.collection("survey_data");
     const customersByAge = await reports.customerAge(collection);
     const customerIncome = await reports.customerIncome(collection);
+    const customerMaritalStatus = await reports.customerMaritalStatus(
+        collection
+    );
 
     res.send({
         data: {
             customersByAge,
             customerIncome,
+            customerMaritalStatus,
         },
     });
 });
