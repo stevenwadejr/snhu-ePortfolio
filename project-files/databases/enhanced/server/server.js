@@ -1,8 +1,9 @@
-import mongodb from 'mongodb';
-import cors from 'cors';
-import express, { json } from 'express';
-import dotenv from 'dotenv';
-import routes from './routes/api.js';
+import mongodb from "mongodb";
+import cors from "cors";
+import express, { json } from "express";
+import dotenv from "dotenv";
+import routes from "./routes/api.js";
+import path from "path";
 
 // parse env variables
 dotenv.config();
@@ -13,18 +14,20 @@ const MongoClient = mongodb.MongoClient;
 const mongoUrl = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}?authSource=admin`;
 const app = express();
 
-(async function() {
-
+(async function () {
     let client;
     let db;
 
     try {
         // Use connect method to connect to the Server
-        client = await MongoClient.connect(mongoUrl, { useUnifiedTopology: true, useNewUrlParser: true });
+        client = await MongoClient.connect(mongoUrl, {
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+        });
         db = client.db(process.env.DB_NAME);
-        const surveyData = await db.collection('survey_data').countDocuments();
+        const surveyData = await db.collection("survey_data").countDocuments();
     } catch (err) {
-        console.log('Error connecting to MongoDB');
+        console.log("Error connecting to MongoDB");
         console.log(err.stack);
         process.exit(1);
     }
@@ -33,42 +36,22 @@ const app = express();
     app.use(cors());
     app.use(json());
     app.use(async (req, res, next) => {
-        // console.log(client);
         req.context = { db };
         next();
     });
 
-    
-    // app.use(async (req, res, next) => {
-    //     const oldJSON = res.json;
-    //     res.json = (body) => {
-    //         console.log(body);
-    //         if (body && body.data && body.data.length) {
-    //             body.data = body.data.map(row => {
-                    
-    //             })
-    //         }
-
-    //         res.json = oldJSON;
-    //         return oldJSON.call(res, body);
-    //     };
-
-    //     next();
-    // });
-
     // Defining route middleware
-    app.use('/api', routes);
+    app.use("/api", routes);
+
+    app.use(express.static(__dirname + "/public/"));
+    app.get("/", (req, res) => {
+        res.sendFile(path.join(__dirname, "public", "index.html"));
+    });
 
     app.listen(port);
     console.log(`Listening On http://localhost:${port}/api`);
-
 })();
 
-
 // app.set('view engine', 'html');
-
-// Static folder
-// app.use(express.static(__dirname + '/views/'));
-
 
 export default app;
