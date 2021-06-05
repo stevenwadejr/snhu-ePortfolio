@@ -38,6 +38,24 @@ const app = express();
         next();
     });
 
+    
+    // app.use(async (req, res, next) => {
+    //     const oldJSON = res.json;
+    //     res.json = (body) => {
+    //         console.log(body);
+    //         if (body && body.data && body.data.length) {
+    //             body.data = body.data.map(row => {
+                    
+    //             })
+    //         }
+
+    //         res.json = oldJSON;
+    //         return oldJSON.call(res, body);
+    //     };
+
+    //     next();
+    // });
+
     // Defining route middleware
     app.use('/api', routes);
 
