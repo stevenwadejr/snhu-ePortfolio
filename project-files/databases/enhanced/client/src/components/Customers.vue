@@ -1,10 +1,16 @@
 <template>
     <div class="row">
         <div class="col-6">
-            <customer-income :customerIncome="customerIncome"></customer-income>
+            <customer-income
+                v-if="customerIncome.length"
+                :customerIncome="customerIncome"
+            ></customer-income>
         </div>
         <div class="col-6">
-            <customer-age :customersByAge="customersByAge"></customer-age>
+            <customer-age
+                v-if="customersByAge.length"
+                :customersByAge="customersByAge"
+            ></customer-age>
         </div>
     </div>
 </template>
