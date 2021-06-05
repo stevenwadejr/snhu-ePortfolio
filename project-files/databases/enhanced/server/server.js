@@ -43,13 +43,13 @@ const app = express();
     // Defining route middleware
     app.use("/api", routes);
 
-    app.use(express.static(__dirname + "/public/"));
+    app.use(express.static(process.cwd() + "/public/"));
     app.get("/", (req, res) => {
-        res.sendFile(path.join(__dirname, "public", "index.html"));
+        res.sendFile(path.join(process.cwd(), "public", "index.html"));
     });
 
     app.listen(port);
-    console.log(`Listening On http://localhost:${port}/api`);
+    console.log(`Listening On http://localhost:${port}`);
 })();
 
 // app.set('view engine', 'html');
