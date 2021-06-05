@@ -1,16 +1,42 @@
 <template>
-    <div class="d-grid gap-5">
-        <div>
-            <sales-by-state
-                v-if="Object.keys(salesByState).length"
-                :salesByState="salesByState"
-            ></sales-by-state>
+    <div class="row">
+        <div class="col-2 position-fixed">
+            <button
+                type="button"
+                class="btn btn-outline-dark d-block mb-3 w-100"
+                @click="goto('sales-by-state')"
+                v-bind:class="[
+                    activeButton == 'sales-by-state' ? 'active' : '',
+                ]"
+            >
+                Sales by State
+            </button>
+            <button
+                type="button"
+                class="btn btn-outline-dark d-block mb-3 w-100"
+                @click="goto('averages-by-state')"
+                v-bind:class="[
+                    activeButton == 'averages-by-state' ? 'active' : '',
+                ]"
+            >
+                Averages by State
+            </button>
         </div>
-        <div>
-            <averages-by-state
-                v-if="averageRestaurantSpend.length"
-                :averageRestaurantSpend="averageRestaurantSpend"
-            ></averages-by-state>
+        <div class="col-10 offset-2">
+            <div class="d-grid gap-5">
+                <div ref="sales-by-state" data-top="true">
+                    <sales-by-state
+                        v-if="Object.keys(salesByState).length"
+                        :salesByState="salesByState"
+                    ></sales-by-state>
+                </div>
+                <div ref="averages-by-state">
+                    <averages-by-state
+                        v-if="averageRestaurantSpend.length"
+                        :averageRestaurantSpend="averageRestaurantSpend"
+                    ></averages-by-state>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -31,9 +57,12 @@ export default {
             salesByState: {},
             averageRestaurantSpend: [],
             loading: false,
+            offsetTop: 0,
+            activeButton: "sales-by-state",
         };
     },
     async mounted() {
+        this.offsetTop = Object.values(this.$refs)[0].offsetTop;
         this.loading = true;
         const response = await axios.get(`http://localhost:9000/api/geography`);
 
@@ -44,6 +73,13 @@ export default {
             this.salesByState = res.data.salesByState;
             this.averageRestaurantSpend = res.data.averageRestaurantSpend;
         }
+    },
+    methods: {
+        // Retrieved from https://shouts.dev/vuejs-scroll-to-elements-on-the-page
+        goto(refName) {
+            this.activeButton = refName;
+            window.scrollTo(0, this.$refs[refName].offsetTop - this.offsetTop);
+        },
     },
 };
 </script>
