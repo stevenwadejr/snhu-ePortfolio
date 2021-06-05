@@ -72,7 +72,19 @@ export default {
                     responsive: true,
                     plugins: {
                         legend: {
+                            display: false,
                             position: "top",
+                        },
+                        title: {
+                            display: true,
+                            text: "Total Sales by State",
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label(tooltipItem) {
+                                    return " $" + tooltipItem.formattedValue;
+                                },
+                            },
                         },
                     },
                     scales: {

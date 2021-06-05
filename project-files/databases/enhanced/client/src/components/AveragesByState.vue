@@ -50,7 +50,7 @@ export default {
                         tooltip: {
                             callbacks: {
                                 label(tooltipItem) {
-                                    return "$" + tooltipItem.formattedValue;
+                                    return " $" + tooltipItem.formattedValue;
                                 },
                                 title(items) {
                                     return abbrStateMap[items[0].label];
