@@ -45,8 +45,8 @@
       <nav>
         <ul>
         {% for item in site.menu %}
-{{page.url}}
-          <li {% if item.href == page.url %} style="font-weight: bold;" {% endif %}><a href="{{ item.href | relative_url }}">{{ item.label }}</a></li>
+          {% assign url = page.url|remove:'.html' %}
+          <li {% if item.href == url %} style="font-weight: bold;" {% endif %}><a href="{{ item.href | relative_url }}">{{ item.label }}</a></li>
         {% endfor %}
         </ul>
       </nav>
