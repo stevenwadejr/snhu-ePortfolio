@@ -46,6 +46,7 @@
         <ul>
         {% for item in site.menu %}
           {% assign url = page.url|remove:'.html' %}
+          {{ url }}
           <li {% if item.href == url %} style="font-weight: bold;" {% endif %}><a href="{{ item.href | relative_url }}">{{ item.label }}</a></li>
         {% endfor %}
         </ul>
