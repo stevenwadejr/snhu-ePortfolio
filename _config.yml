@@ -4,5 +4,11 @@ title: CS-499-T5476 ePortfolio - Steven Wade
 menu:
   - label: "Home"
     href: "/"
+  - label: "Code Review"
+    href: "/code-review"
   - label: "Enhancement One"
     href: "/enhancement-one"
+  - label: "Enhancement Two"
+    href: "/enhancement-two"
+  - label: "Enhancement Three"
+    href: "/enhancement-three"
