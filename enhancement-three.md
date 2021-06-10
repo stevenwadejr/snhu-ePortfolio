@@ -27,9 +27,15 @@ The process of enhancing and modifying this artifact did not go as smoothly as t
 
 ## References
 
-<div class="references">
+<div class="reference">
 Chart.js (n.d.). *Open source HTML5 charts for your website.* https://www.chartjs.org/
+</div>
+<div class="reference">
 MongoDB, Inc. (n.d.). *The database for modern applications.* https://www.mongodb.com/
+</div>
+<div class="reference">
 OpenJS Foundation (n.d.). *About Node.js.* https://nodejs.org/en/about/
+</div>
+<div class="reference">
 Southern New Hampshire University (SNHU). (n.d.). *CS 499 final project guidelines and rubric.* Retrieved from https://learn.snhu.edu/content/enforced/751280-CS-499-T5476-OL-TRAD-UG.21EW5/Course%20Documents/CS%20499%20Final%20Project%20Guidelines%20and%20Rubric.pdf
 </div>
