@@ -12,5 +12,7 @@ The process of enhancing and modifying this artifact was more intensive and diff
 
 
 ## References
-Southern New Hampshire University (SNHU). (n.d.). CS 499 final project guidelines and rubric. Retrieved from https://learn.snhu.edu/content/enforced/751280-CS-499-T5476-OL-TRAD-UG.21EW5/Course%20Documents/CS%20499%20Final%20Project%20Guidelines%20and%20Rubric.pdf
 
+<div class="reference">
+Southern New Hampshire University (SNHU). (n.d.). CS 499 final project guidelines and rubric. Retrieved from https://learn.snhu.edu/content/enforced/751280-CS-499-T5476-OL-TRAD-UG.21EW5/Course%20Documents/CS%20499%20Final%20Project%20Guidelines%20and%20Rubric.pdf
+</div>
