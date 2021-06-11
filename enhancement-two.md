@@ -10,6 +10,8 @@ I believe that this enhanced artifact satisfies course outcomes CS-499-03, CS-49
 
 The process of enhancing and modifying this artifact went about as well as I expected.  The rubric for the final project states that only one enhancement must be performed, but for this artifact I chose to do two enhancements: “improve efficiency” and “expand complexity” (SNHU, n.d.).  I had a plan to improve the efficiency of the artifact by preloading the text file resources and storing their contents in memory with hash maps, but my plan for expanding the complexity was to build an entirely new interface – a graphical one.  Prior to this project I had not written a GUI in Java, so I had to search the web for every question I had or issue I got stuck on.  This involved me rewriting portions of the application multiple times as I learned how to create different aspects of a GUI within Java.  I understand that the way I have built this GUI application may not be standard practice for experienced Java developers, but it works well, and the code is structured in a clean and organized manner; therefore, I am satisfied with the way the artifact and its enhancements turned out.  I accomplished the goals that I outlined in Module One that I wanted to accomplish.
 
+<div class="course-outcomes-table">
+
 **Table 1**
 
 *Course Outcomes*
@@ -23,6 +25,7 @@ The process of enhancing and modifying this artifact went about as well as I exp
 | CS-499-04 | Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals |
 | CS-499-05 | Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources |
 
+</div>
 
 *Note*. From “CS 499 Final Project Guidelines and Rubric” by Southern New Hampshire University (SNHU) (n.d.), (https://learn.snhu.edu/content/enforced/751280-CS-499-T5476-OL-TRAD-UG.21EW5/Course%20Documents/CS%20499%20Final%20Project%20Guidelines%20and%20Rubric.pdf)
 
