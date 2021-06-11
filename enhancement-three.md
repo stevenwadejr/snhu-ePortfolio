@@ -10,9 +10,8 @@ I believe that this enhanced artifact satisfies course outcomes CS-499-01, CS-49
 The process of enhancing and modifying this artifact did not go as smoothly as the previous two enhancement categories.  For starters, prior to this enhanced artifact, I had never built a Node.js application (OpenJS Foundation, n.d.), only had rudimentary experience with MongoDB (MongoDB, Inc., n.d.), and had never used the graphing and chart library Chart.js (Chart.js, n.d.).  The rubric for the final project suggests “create a MongoDB interface with HTML/JavaScript” as an enhancement to Category Three (SNHU, n.d.), but my inexperience in these some of these areas meant that I had to learn each piece of technology as I went along.  I knew the user-experience that I wanted for the final enhancement, but I did not want to compromise on quality for the sake of time or inexperience.  Despite this project taking longer than I expected to complete and my lack of experience in some of the technology used, I am extremely pleased with the outcome.  The enhanced artifact is exactly what I pictured and planned in the initial refinement plan submitted in Module One.
 
 **Table 1**
-
 *Course Outcomes*
-
+<div class="course-outcomes-table">
 |||
 |---|---|
 | CS-499-01 | Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision making in the field of computer science |
@@ -20,6 +19,7 @@ The process of enhancing and modifying this artifact did not go as smoothly as t
 | CS-499-03 | Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution, while managing the trade-offs involved in design choices |
 | CS-499-04 | Demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals |
 | CS-499-05 | Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources |
+</div>
 
 *Note*. From “CS 499 Final Project Guidelines and Rubric” by Southern New Hampshire University (SNHU) (n.d.), (https://learn.snhu.edu/content/enforced/751280-CS-499-T5476-OL-TRAD-UG.21EW5/Course%20Documents/CS%20499%20Final%20Project%20Guidelines%20and%20Rubric.pdf)
 
